@@ -10,38 +10,20 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *current = list;
-	int is_loop;
+	listint_t *behind = list;
+	listint_t *ahead = list;
 
-	while (current->next != NULL)
+	if (list == NULL)
+		return (0);
+
+	while (ahead != NULL && ahead->next != NULL)
 	{
-		is_loop = is_looped(current);
+		ahead = ahead->next->next;
+		behind = behind->next;
 
-		if (is_loop == 0)
+		if (behind == ahead)
 			return (1);
-		current = current->next;
 	}
+
 	return (0);
-}
-
-/**
- * is_looped - This function checks if there is
- * a loop to the current node
- * @current: List node
- * Return: 0 if true otherwise 1
- */
-int is_looped(listint_t *current)
-{
-	listint_t *h = current;
-	listint_t *curr = current->next;
-
-	while (curr != NULL)
-	{
-		if (curr == h)
-		{
-			return (0);
-		}
-		curr = curr->next;
-	}
-	return (1);
 }

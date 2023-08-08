@@ -26,6 +26,5 @@ void free_listint(listint_t *head);
 
 int check_cycle(listint_t *list);
 
-int is_looped(listint_t *current);
 
 #endif
