@@ -175,3 +175,7 @@ main.c
 10-linked_lists.c
 cycle
 test
+linked_lists.c
+main
+stub.py
+.vscode
