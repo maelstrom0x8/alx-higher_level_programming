@@ -1,4 +1,0 @@
-{
-	"python.linting.pycodestyleEnabled": true,
-	"python.linting.pycodestylePath": "/home/maelstrom/.local/bin/pycodestyle"
-}
