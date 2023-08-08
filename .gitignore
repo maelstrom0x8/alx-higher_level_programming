@@ -174,3 +174,4 @@ cython_debug/
 main.c
 10-linked_lists.c
 cycle
+test
