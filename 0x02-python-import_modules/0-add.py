@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-calc = __import__("add_0")
 
 if __name__ == "__main__":
+    from add_0 import add
+    
     a = 1
     b = 2
-    print("{} + {} = {}".format(a, b, calc.add(a, b)), end="\n")
+    print("{} + {} = {}".format(a, b, add(a, b)), end="\n")

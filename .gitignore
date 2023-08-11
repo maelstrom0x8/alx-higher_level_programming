@@ -179,3 +179,4 @@ linked_lists.c
 main
 stub.py
 .vscode
+*[0-9].py

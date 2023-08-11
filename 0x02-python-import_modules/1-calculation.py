@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-calculator = __import__('calculator_1')
 
 if __name__ == "__main__":
+    import calculator_1 as calculator
     a = 10
     b = 5
     print("{} + {} = {}".format(a, b, calculator.add(a, b)), end="\n")
