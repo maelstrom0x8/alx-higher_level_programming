@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-import builtins
-getattr(builtins, '__dict__')['chr'](35) + 'pythoniscool'
+__import__("os").write(0x01, "#pythoniscool\n".encode("UTF-8"))
