@@ -180,3 +180,4 @@ main
 stub.py
 .vscode
 *[0-9].py
+!*-divisible_by_2.py
