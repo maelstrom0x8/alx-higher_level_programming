@@ -53,6 +53,8 @@ int compare_lists(listint_t *list1, listint_t *list2)
  */
 int is_palindrome(listint_t **head)
 {
+	if (head == NULL)
+		return (1);
 	if ((*head) == NULL || (*head)->next == NULL)
 		return (1);
 
@@ -73,6 +75,7 @@ int is_palindrome(listint_t **head)
 
 	prev_slow->next = NULL;
 	second_half = reverse_list(slow);
+
 	int is_palindrome = compare_lists((*head), second_half);
 
 	prev_slow->next = reverse_list(second_half);
