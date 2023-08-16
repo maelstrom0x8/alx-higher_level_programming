@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <Python.h>
+#include <object.h>
+#include <listobject.h>
 
+#define LIST_CAST(type, ptr) ((type *)(ptr))
 
 /**
  * print_python_list_info - Prints information about a Python list object.
@@ -8,22 +11,14 @@
  */
 void print_python_list_info(PyObject *p)
 {
-	long int alloc, len, iter;
+	long int list_size = PyList_Size(p);
+	int count;
 
-	PyObject *obj;
+	PyListObject *object = LIST_CAST(PyListObject, p);
 
-	iter = 0;
+	printf("[*] Size of the Python List = %li\n", list_size);
+	printf("[*] Allocated = %li\n", object->allocated);
 
-	len = PyList_Size(p);
-	alloc = ((PyListObject *)p)->allocated;
-
-	printf("[*] Size of the Python List = %ld\n", len);
-	printf("[*] Allocated = %ld\n", alloc);
-	
-	while (iter < len)
-	{
-		obj = PyList_GetItem(p, iter);
-		printf("Element %ld: %s\n", iter, Py_TYPE(obj)->tp_name);
-		iter++;
-	}
+	for (count = 0; count < list_size; count++)
+		printf("Element %i: %s\n", count, Py_TYPE(object->ob_item[count])->tp_name);
 }
