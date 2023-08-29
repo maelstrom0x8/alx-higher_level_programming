@@ -57,11 +57,18 @@ class Square:
 
     @property
     def position(self):
-        """Get/set the current position of the square."""
+        """Get the current position of the square."""
         return self.__position
 
     @position.setter
     def position(self, value: tuple):
+        """
+        Get the current position of the square.
+
+        Returns:
+                tuple: A tuple representing the position of the square
+                in the format (x, y).
+        """
         if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 integers")
 
