@@ -1,0 +1,68 @@
+    Return the sum of two integers.
+
+    Float arguments are casted to ints before calculating the sum.
+
+    :param a: An integer or float.
+    :param b: An integer or float, defaults to 98.
+
+    :return: The sum of a and b as an integer.
+
+    :raises TypeError: If a or b is not an int or float.
+
+    # Test basic integer addition.
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(1, 2)
+    3
+
+    # Test addition with float inputs.
+
+    >>> add_integer(3.5, 2.5)
+    5
+
+    # Test addition with one argument being 0.
+
+    >>> add_integer(5, 0)
+    5
+
+    # Test addition with negative integers.
+
+    >>> add_integer(-5, -5)
+    -10
+
+    # Test rounding down of float inputs.
+
+    >>> add_integer(2.7, 3.2)
+    5
+
+    # Test one float and one integer input.
+
+    >>> add_integer(5.0, 2)
+    7
+
+	# Test input of invalid type for 'a'.
+
+    >>> add_integer("10", 5)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+    
+	# Test input of invalid type for 'b'.
+
+    >>> add_integer(10, "5")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+    
+
+    >>> add_integer(5.5, "2")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+    # Test both 'a' and 'b' being of invalid types.
+
+	>>> add_integer("X", "re")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer

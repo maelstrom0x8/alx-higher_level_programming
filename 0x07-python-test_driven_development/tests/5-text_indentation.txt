@@ -1,0 +1,129 @@
+
+Before All:
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test case 1:
+Testing with a simple sentence.
+>>> text_indentation("Hello, world!")
+
+Test case 2:
+Testing with a sentence containing a newline character.
+>>> text_indentation("Hello,\nworld!")
+
+Test case 3:
+Testing with a sentence containing multiple spaces.
+>>> text_indentation("Hello,     world!")
+
+Test case 4:
+Testing with a sentence containing multiple spaces at the beginning.
+>>> text_indentation("     Hello, world!")
+
+# Test case 5:
+# Testing with a sentence containing multiple spaces at the end.
+# >>> text_indentation("Hello, world!     ")
+# Hello, world!
+
+
+Test case 9:
+Testing with a sentence containing a colon.
+>>> text_indentation("    This: is a colon.")
+This:
+<BLANKLINE>
+is a colon.
+<BLANKLINE>
+
+
+
+Test case 7:
+Testing with a sentence containing a period.
+>>> text_indentation("This is a test sentence.")
+This is a test sentence.
+<BLANKLINE>
+
+Test case 8:
+Testing with a sentence containing a question mark.
+>>> text_indentation("      Is this a question?")
+Is this a question?
+<BLANKLINE>
+
+Test case 9:
+Testing with a sentence containing a colon.
+>>> text_indentation("      This:      is a colon.     ")
+This:
+<BLANKLINE>
+is a colon.
+<BLANKLINE>
+
+Test case 10:
+Testing with a sentence containing a period, question mark, and colon.
+>>> text_indentation("           Hello. Is this a test: Yes?            ")
+Hello.
+<BLANKLINE>
+Is this a test:
+<BLANKLINE>
+Yes?
+<BLANKLINE>
+
+Test case 11:
+Testing with an empty string.
+>>> text_indentation("")
+
+# The following test cases include TypeError due to invalid input.
+Test case 12:
+Testing with an integer input.
+>>> text_indentation(42)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+Test case 13:
+Testing with a list input.
+>>> text_indentation(["Hello", "world"])
+Traceback (most recent call last):
+TypeError: text must be a string
+
+# The following test cases include multiple sentences separated by punctuation.
+
+Test case 14:
+Testing with multiple sentences separated by periods.
+>>> text_indentation("Sentence 1. Sentence 2.")
+Sentence 1.
+<BLANKLINE>
+Sentence 2.
+<BLANKLINE>
+
+Test case 15:
+Testing with multiple sentences separated by question marks.
+>>> text_indentation("Is this a question? Yes, it is.")
+Is this a question?
+<BLANKLINE>
+Yes, it is.
+<BLANKLINE>
+
+Test case 16:
+Testing with multiple sentences separated by colons.
+>>> text_indentation("This: is a test. Another: test.")
+This:
+<BLANKLINE>
+is a test.
+<BLANKLINE>
+Another:
+<BLANKLINE>
+test.
+<BLANKLINE>
+
+Test case 17:
+Should handle sentence containing a sequence of characters [‘.’, ‘?’, ‘:’]
+>>> text_indentation("""Lorem ipsum dolo::: sit amet""")
+Lorem ipsum dolo:
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+
+
+Test case 18:
+Handle None
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string

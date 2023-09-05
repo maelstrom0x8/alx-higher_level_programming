@@ -1,0 +1,65 @@
+Before All
+>>> print_square = __import__('4-print_square').print_square
+
+Should print nothing
+>>> print_square(0)
+
+Should print a square with length 1 
+>>> print_square(1)
+#
+
+Should print a square with length 4
+>>> print_square(4)
+####
+####
+####
+####
+
+Should print a square with length 10
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+Should raise errors for invalid arguments
+
+>>> print_square(5.5)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square("not an int")
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> print_square(None)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+
+Should raise ValueError for non-positive size.
+
+>>> print_square(-10)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+>>> print_square(-11)
+Traceback (most recent call last):
+ValueError: size must be >= 0
+
+Argument to function is non-optional
+
+>>> print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+Should handle boolean -> int conversions
+>>> print_square(True)
+Traceback (most recent call last):
+TypeError: size must be an integer

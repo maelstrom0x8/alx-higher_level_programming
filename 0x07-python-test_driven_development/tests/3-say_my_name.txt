@@ -1,0 +1,94 @@
+
+Before All:
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test case 1:
+Testing with two names.
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+Test case 2:
+Testing with a single name.
+>>> say_my_name("Alice")
+My name is Alice 
+
+Test case 3:
+Testing with an empty string as the first name.
+>>> say_my_name("", "Smith")
+My name is  Smith
+
+Test case 4:
+Testing with two empty strings.
+>>> say_my_name("", "")
+My name is  
+
+Test case 5:
+Testing with a space as the first name.
+>>> say_my_name(" ", "Johnson")
+My name is   Johnson
+
+Test case 6:
+Testing with a space as both first and last names.
+>>> say_my_name(" ", " ")
+My name is    
+
+Test case 7:
+Testing with an integer as the first name.
+>>> say_my_name(42, "Brown")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+Test case 8:
+Testing with an integer as the last name.
+>>> say_my_name("Emily", 123)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+Test case 9:
+Testing with a list as the first name.
+>>> say_my_name(["John"], "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+Test case 10:
+Testing with None as the first name.
+>>> say_my_name(None, "Johnson")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+Test case 11:
+Testing with None as both first and last names.
+>>> say_my_name(None, None)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+Test case 12:
+Testing with special characters in names.
+>>> say_my_name("Mr.", "Smith!")
+My name is Mr. Smith!
+
+Test case 13:
+Testing with an emoji as the first name.
+>>> say_my_name("🙂", "Johnson")
+My name is 🙂 Johnson
+
+Test case 14:
+Testing with a long name.
+>>> say_my_name("ThisIsALongFirstName", "ThisIsALongLastName")
+My name is ThisIsALongFirstName ThisIsALongLastName
+
+Test case 15:
+Testing with non-ASCII characters in names.
+>>> say_my_name("José", "González")
+My name is José González
+
+Test case 16:
+Testing with a space as the last name.
+>>> say_my_name("Jane", " ")
+My name is Jane  
+
