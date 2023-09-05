@@ -28,6 +28,6 @@ def text_indentation(text):
     while end != len(text):
         for k in text[start:]:
             if k in ".:?":
-                print(text[start : end + 1].strip(), end="\n\n")
+                print(text[start:end + 1].strip(), end="\n\n")
                 start = end + 1
             end += 1
