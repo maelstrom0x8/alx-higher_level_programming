@@ -5,24 +5,29 @@ Before All:
 Test case 1:
 Testing with a simple sentence.
 >>> text_indentation("Hello, world!")
+Hello, world!
 
 Test case 2:
 Testing with a sentence containing a newline character.
 >>> text_indentation("Hello,\nworld!")
+Hello,
+world!
 
 Test case 3:
 Testing with a sentence containing multiple spaces.
 >>> text_indentation("Hello,     world!")
+Hello,     world!
 
 Test case 4:
 Testing with a sentence containing multiple spaces at the beginning.
 >>> text_indentation("     Hello, world!")
+Hello, world!
 
-# Test case 5:
-# Testing with a sentence containing multiple spaces at the end.
-# >>> text_indentation("Hello, world!     ")
-# Hello, world!
 
+Test case 5:
+Testing with a sentence containing multiple spaces at the end.
+>>> text_indentation("Hello, world!     ")
+Hello, world!
 
 Test case 9:
 Testing with a sentence containing a colon.
@@ -120,10 +125,29 @@ Lorem ipsum dolo:
 <BLANKLINE>
 :
 <BLANKLINE>
-
+sit amet
 
 Test case 18:
 Handle None
 >>> text_indentation(None)
 Traceback (most recent call last):
 TypeError: text must be a string
+
+
+QA Review Tests
+>>> text_indentation("Holberton. School? How are you: John")
+Holberton.
+<BLANKLINE>
+School?
+<BLANKLINE>
+How are you:
+<BLANKLINE>
+John
+
+>>> text_indentation("Holberton.School")
+Holberton.
+<BLANKLINE>
+School
+
+>>> text_indentation("Holberton School")
+Holberton School

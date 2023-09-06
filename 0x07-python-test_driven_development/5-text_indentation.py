@@ -24,10 +24,13 @@ def text_indentation(text):
 
     start = 0
     end = 0
+    px = -1
 
     while end != len(text):
         for k in text[start:]:
             if k in ".:?":
                 print(text[start:end + 1].strip(), end="\n\n")
                 start = end + 1
+                px = end
             end += 1
+    print(text[px + 1: len(text)].strip(), end='')
