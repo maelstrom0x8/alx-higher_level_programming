@@ -1,0 +1,42 @@
+# Creating an instance of BaseGeometry
+>>> geom = __import__('7-base_geometry').BaseGeometry()
+
+# Example 1: Testing the area() method (Not yet implemented)
+# The area() method raises an Exception since it's not implemented.
+>>> geom.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+# Example 2: Validating an integer parameter
+# The integer_validator method should not raise any exceptions for valid inputs.
+>>> geom.integer_validator("side_length", 5)
+>>> geom.integer_validator("another_length", 10)
+
+# Example 3: Validating a non-integer parameter
+# The integer_validator method should raise a TypeError for non-integer inputs.
+>>> geom.integer_validator("side_length", "not_an_integer")
+Traceback (most recent call last):
+TypeError: side_length must be an integer
+
+# Example 4: Validating a non-positive integer parameter
+# The integer_validator method should raise a ValueError for non-positive integer inputs.
+>>> geom.integer_validator("side_length", 0)
+Traceback (most recent call last):
+ValueError: side_length must be greater than 0
+
+# Example 5: Validating a negative integer parameter
+# The integer_validator method should raise a ValueError for negative integer inputs.
+>>> geom.integer_validator("side_length", -5)
+Traceback (most recent call last):
+ValueError: side_length must be greater than 0
+
+# Example 6: Validating a large integer parameter
+# The integer_validator method should not raise any exceptions for a large positive integer.
+>>> geom.integer_validator("large_length", 1000000)
+
+# Example 7: Validating a zero parameter
+# The integer_validator method should raise a ValueError for zero inputs.
+>>> geom.integer_validator("side_length", 0)
+Traceback (most recent call last):
+ValueError: side_length must be greater than 0
+
