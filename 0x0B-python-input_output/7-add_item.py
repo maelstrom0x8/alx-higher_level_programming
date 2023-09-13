@@ -10,8 +10,7 @@ to the same JSON file.
 import sys
 
 if __name__ == "__main__":
-    json_i = \
-        __import__('6-load_from_json_file')
+    json_i = __import__('6-load_from_json_file')
     json_o = __import__('5-save_to_json_file')
 
     try:
