@@ -2,6 +2,8 @@
 
 """Abstract base class declaration for geometric objects"""
 
+Base = __import__('6-base_geometry').BaseGeometry
+
 
 class BaseGeometry:
     """Base definition for geometric objects"""
