@@ -77,11 +77,16 @@ class Rectangle(Base):
             id (int, optional): The identifier for the rectangle. Defaults to
             None.
         """
-        super().__init__(id)
+        args = locals()
+        keys = list(args.keys())
+        for e in keys[1:-1]:
+            if e is not 'id' and type(args[e]) is not int:
+                raise TypeError('{} must be an integer'.format(e))
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
@@ -230,7 +235,7 @@ class Rectangle(Base):
                     else:
                         self.id = kwargs.get('id', self.id)
                     continue
-                if not isinstance(kwargs.get(k), int):
+                if type(kwargs.get(k)) != int:
                     raise TypeError(k + ' must be an integer')
                 if k in ['height', 'width'] and kwargs[k] <= 0:
                     raise ValueError(k + ' must be > 0')

@@ -85,13 +85,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(square.id, data['id'])
         self.assertEqual(square.size, data['size'])
 
-    @unittest.skip('Trivial')
-    def test_create_base_instance(self):
-        # Test the creation of a Base instance using the create method
-        data = {'id': 3}
-        base = Rectangle.create(**data)
-        self.assertEqual(base.id, data['id'])
-
 
 class TestRectangle_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the Rectangle class."""

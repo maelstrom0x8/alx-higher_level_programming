@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """base.py
 
 This module contains the Base class and related utility methods for
