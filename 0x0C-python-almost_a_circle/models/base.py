@@ -187,8 +187,9 @@ class Base:
         try:
             with open(filename, "r", newline="") as fil:
                 if cls.__name__ == "Rectangle":
-                    fields = cls.__name__ == "Rectangle" and
-                    ["id", "width", "height", "x", "y"]
+                    fields = cls.__name__ == "Rectangle" and ["id", "width",
+                                                              "height", "x",
+                                                              "y"]
                 else:
                     fields = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(fil, fieldnames=fields)

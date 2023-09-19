@@ -80,7 +80,7 @@ class Rectangle(Base):
         args = locals()
         keys = list(args.keys())
         for e in keys[1:-1]:
-            if e is not 'id' and type(args[e]) is not int:
+            if e != 'id' and type(args[e]) is not int:
                 raise TypeError('{} must be an integer'.format(e))
         self.width = width
         self.height = height
