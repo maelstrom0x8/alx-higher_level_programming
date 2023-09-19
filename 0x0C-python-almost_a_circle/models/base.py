@@ -85,14 +85,13 @@ class Base:
             list_objs (list): A list of objects to be serialized and saved to
             a JSON file.
         """
-        if list_objs is None or not isinstance(list_objs, list):
-            res = None
-        else:
-            res = [x.to_dictionary() for x in list_objs]
-        json_str = Base.to_json_string(res) if isinstance(res, list) else "[]"
         filename = ''.join([cls.__name__, '.json'])
         with open(file=filename, encoding='utf-8', mode='w') as file:
-            file.write(json_str)
+            if list_objs is None or not isinstance(list_objs, list):
+                file.write("[]")
+            else:
+                res = [x.to_dictionary() for x in list_objs]
+                file.write(Base.to_json_string(res))
 
     @staticmethod
     def from_json_string(json_string: str):
@@ -139,15 +138,11 @@ class Base:
         instances = []
 
         try:
-            with open(filename, 'r', encoding='utf-8') as file:
-                json_str = file.read()
-                data = json.loads(json_str)
-                for item in data:
-                    instances.append(cls.create(**item))
-        except FileNotFoundError:
-            pass
-
-        return instances
+            with open(filename, "r") as jsonfile:
+                list_dicts = Base.from_json_string(jsonfile.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return instances
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
