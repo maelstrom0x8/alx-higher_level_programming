@@ -20,7 +20,9 @@ Functions:
     instances.
 """
 
+import csv
 import json
+import turtle
 
 
 class Base:
@@ -146,3 +148,97 @@ class Base:
             pass
 
         return instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes a list of instances to a CSV file.
+
+        Args:
+            cls: The class.
+            list_objs (list): A list of instances to serialize.
+
+        Returns:
+            None
+        """
+        filename = ''.join([cls.__name__, ".csv"])
+        with open(filename, "w", newline="") as csvfile:
+            if list_objs is None or list_objs == []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes instances from a CSV file.
+
+        Args:
+            cls: The class.
+
+        Returns:
+            list: A list of instances.
+        """
+        filename = ''.join([cls.__name__ + ".csv"])
+        try:
+            with open(filename, "r", newline="") as fil:
+                if cls.__name__ == "Rectangle":
+                    fields = cls.__name__ == "Rectangle" and
+                    ["id", "width", "height", "x", "y"]
+                else:
+                    fields = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(fil, fieldnames=fields)
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draws instances of rectangles and squares
+        on a Turtle graphics screen.
+
+        Args:
+            list_rectangles (list): A list of Rectangle instances to draw.
+            list_squares (list): A list of Square instances to draw.
+
+        Returns:
+            None
+        """
+        g_obj = turtle.Turtle()
+        g_obj.screen.bgcolor("#EBEBEB")
+        g_obj.pensize(2)
+        g_obj.shape("triangle")
+
+        g_obj.color("#414141")
+        for rect in list_rectangles:
+            g_obj.showturtle()
+            g_obj.up()
+            g_obj.goto(rect.x, rect.y)
+            g_obj.down()
+            for i in range(2):
+                g_obj.forward(rect.width)
+                g_obj.left(90)
+                g_obj.forward(rect.height)
+                g_obj.left(90)
+            g_obj.hideturtle()
+
+        g_obj.color("#212121")
+        for sq in list_squares:
+            g_obj.showturtle()
+            g_obj.up()
+            g_obj.goto(sq.x, sq.y)
+            g_obj.down()
+            for i in range(2):
+                g_obj.forward(sq.width)
+                g_obj.left(90)
+                g_obj.forward(sq.height)
+                g_obj.left(90)
+            g_obj.hideturtle()
+
+        turtle.exitonclick()
