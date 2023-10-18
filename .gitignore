@@ -186,4 +186,5 @@ temp/
 0x07-python-test_driven_development/x.sh
 stage/
 x.*
-
+*.csv
+0x0D-SQL_introduction/scripts
