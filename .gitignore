@@ -187,4 +187,5 @@ temp/
 stage/
 x.*
 *.csv
-0x0D-SQL_introduction/scripts
+inits
+docker-*.yml
