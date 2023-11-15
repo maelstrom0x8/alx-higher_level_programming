@@ -3,7 +3,7 @@
 const Squaro = require('./5-square');
 
 class Square extends Squaro {
-  charPrint = function (char) {
+  charPrint (char) {
     const c = char || 'x';
     for (let i = 0; i < this.height; i++) {
       console.log(c.repeat(this.width));
