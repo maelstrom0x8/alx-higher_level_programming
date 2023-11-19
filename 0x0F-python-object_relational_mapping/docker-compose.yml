@@ -1,0 +1,56 @@
+version: '3.1'
+
+# mysql -h 127.0.0.1 -u root -p --protocol=tcp -P 3306
+
+services:
+  mysql_0:
+    container_name: mysql_hbtn_0e_0_usa
+    image: mysql:8.1.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: hbtn_0e_0_usa
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  mysql_4:
+    container_name: mysql_hbtn_0e_4_usa
+    image: mysql:8.1.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: hbtn_0e_4_usa
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  mysql_6:
+    container_name: mysql_hbtn_0e_6_usa
+    image: mysql:8.1.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: hbtn_0e_6_usa
+      MYSQL_ROOT_PASSWORD: root
+    # volumes:
+    #   - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
+
+  mysql_14:
+    container_name: mysql_hbtn_0e_14_usa
+    image: mysql:8.1.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: hbtn_0e_14_usa
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
