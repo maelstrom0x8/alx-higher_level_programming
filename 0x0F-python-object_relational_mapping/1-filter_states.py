@@ -31,9 +31,8 @@ if __name__ == "__main__":
                    user=user, passwd=password, db=db, charset="utf8")
 
     cur = conn.cursor()
-    cur.execute("""SELECT * FROM states
-                WHERE SUBSTRING(name,1,1) = 'N'
-                ORDER BY id ASC""")
+    cur.execute("""SELECT * FROM states WHERE name
+                    LIKE BINARY 'N%' ORDER BY states.id""")
 
     result_set = cur.fetchall()
 

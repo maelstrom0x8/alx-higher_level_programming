@@ -28,10 +28,9 @@ if __name__ == '__main__':
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    result_set = session.query(State).order_by(State.id).limit(1)
-    if result_set.count() == 0:
+    result_set = session.query(State).first()
+    if result_set is None:
         print('Nothing')
     else:
-        for state in result_set:
-            print("{}: {}".format(state.id, state.name))
+         print("{}: {}".format(result_set.id, result_set.name))
     session.close()

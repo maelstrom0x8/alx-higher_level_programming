@@ -36,8 +36,7 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name = '%s' ORDER BY id ASC"
-                % (name))
+    cur.execute("SELECT * FROM states WHERE name LIKE %s", (name,))
     result_set = cur.fetchall()
 
     [print(x) for x in result_set]

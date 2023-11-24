@@ -41,8 +41,8 @@ services:
     environment:
       MYSQL_DATABASE: hbtn_0e_6_usa
       MYSQL_ROOT_PASSWORD: root
-    # volumes:
-    #   - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+       - ./schemas/7-model_state_fetch_all.sql:/docker-entrypoint-initdb.d/init.sql
 
   mysql_14:
     container_name: mysql_hbtn_0e_14_usa
