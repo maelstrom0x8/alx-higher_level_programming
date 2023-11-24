@@ -23,12 +23,12 @@ if __name__ == '__main__':
     from model_state import Base, State
 
     user, password, db, state = sys.argv[1:]
-    conn_url = f"mysql+mysqldb://{user}:{password}@localhost:{3306}/{db}"
+    conn_url = f"mysql+mysqldb://{user}:{password}@127.0.0.1:{3306}/{db}"
 
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    result_set = session.query(State).where(State.name == state).first()
+    result_set = session.query(State).where(State.name == (state, )).first()
     if result_set is None:
         print('Not Found')
     else:
