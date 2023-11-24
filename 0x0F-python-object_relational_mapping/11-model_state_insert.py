@@ -20,15 +20,16 @@ if __name__ == '__main__':
     from sqlalchemy.orm import Session
     from model_state import Base, State
 
-    user, password, db, name = sys.argv[1:]
-    conn_url = f"mysql+mysqldb://{user}:{password}@localhost:{3306}/{db}"
+    user, password, db = sys.argv[1:]
+    conn_url = f"mysql+mysqldb://{user}:{password}@127.0.0.1:{3306}/{db}"
 
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
 
-    state = State(name=name)
+    state = State(name='Louisiana')
     session.add(state)
     session.commit()
-    print(state.id)
+    instance = session.query(State).filter_by(name='Louisiana').first()
+    print(instance.id)
     session.close()
