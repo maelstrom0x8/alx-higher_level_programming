@@ -14,7 +14,6 @@ Arguments:
 
 """
 
-
 if __name__ == '__main__':
 
     import sys
@@ -28,9 +27,12 @@ if __name__ == '__main__':
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    result_set = session.query(State).where(State.name == (state, )).first()
+
+    result_set = session.query(State).where(State.name == (state,)).first()
+
     if result_set is None:
-        print('Not Found')
+        print('Not found')
     else:
         print(result_set.id)
+
     session.close()
