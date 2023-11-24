@@ -14,7 +14,6 @@ Arguments:
 
 """
 
-
 if __name__ == '__main__':
 
     import sys
@@ -28,9 +27,9 @@ if __name__ == '__main__':
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    result_set = session.query(State).filter(
-        State.name.like("%a%")).order_by(State.id).all()
-    if len(result_set) == 0:
+    result_set = (session.query(State).filter(State.name.like('%a%'))
+                  .order_by(State.id).all())
+    if result_set is None or len(result_set) == 0:
         print('Nothing')
     else:
         for state in result_set:
