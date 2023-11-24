@@ -22,16 +22,11 @@ if __name__ == '__main__':
     from model_state import Base, State
 
     user, password, db = sys.argv[1:]
-    conn_url = f"mysql+mysqldb://{user}:{password}@localhost:{3306}/{db}"
+    conn_url = f"mysql+mysqldb://{user}:{password}@127.0.0.1:{3306}/{db}"
 
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = Session(engine)
-    result_set = (session.query(State).filter(State.name.like('%a%'))
-                  .order_by(State.id).all())
-    if result_set is None or len(result_set) == 0:
-        print('Nothing')
-    else:
-        for state in result_set:
-            print("{}: {}".format(state.id, state.name))
+    for state in session.query(State).filter(State.name.like('%a%')):
+        print(state.id, state.name, sep=": ")
     session.close()
