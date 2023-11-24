@@ -15,19 +15,20 @@ Arguments:
 """
 
 if __name__ == '__main__':
-
     import sys
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
     from model_state import Base, State
 
-    user, password, db, state = sys.argv[1:]
+    user, password, db, name = sys.argv[1:]
     conn_url = f"mysql+mysqldb://{user}:{password}@localhost:{3306}/{db}"
 
     engine = create_engine(conn_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
-    obj = State(name=state)
     session = Session(engine)
-    session.add(obj)
+
+    state = State(name=name)
+    session.add(state)
     session.commit()
+    print(state.id)
     session.close()

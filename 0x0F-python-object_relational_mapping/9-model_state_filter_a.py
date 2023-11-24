@@ -29,8 +29,8 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     session = Session(engine)
     result_set = session.query(State).filter(
-        State.name.like("%a%")).order_by(State.id)
-    if result_set.count() == 0:
+        State.name.like("%a%")).order_by(State.id).all()
+    if len(result_set) == 0:
         print('Nothing')
     else:
         for state in result_set:
