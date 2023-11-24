@@ -14,7 +14,6 @@ Arguments:
 
 """
 
-
 if __name__ == '__main__':
 
     import sys
@@ -32,5 +31,5 @@ if __name__ == '__main__':
     if result_set is None:
         print('Nothing')
     else:
-         print("{}: {}".format(result_set.id, result_set.name))
+        print("{}: {}".format(result_set.id, result_set.name))
     session.close()

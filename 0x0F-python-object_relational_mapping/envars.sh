@@ -6,3 +6,4 @@ export PROMPT_DIRTRIM=1
 export DB_PORT=3306
 export SCHEMA=$1
 alias dc='docker-compose'
+alias pc=pycodestyle
