@@ -54,3 +54,14 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
+
+  mysql_101:
+    container_name: mysql_hbtn_0e_101_usa
+    image: mysql:8.1.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: hbtn_0e_101_usa
+      MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - ./${SCHEMA}:/docker-entrypoint-initdb.d/init.sql
