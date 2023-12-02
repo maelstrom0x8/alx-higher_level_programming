@@ -31,5 +31,5 @@ if __name__ == '__main__':
 
     response = requests.get(target_url)
     print('Body response:')
-    print('    - type: ', type(response.text))
-    print('    - content: ', response.text)
+    print('\t- type: ', type(response.text), sep='')
+    print('\t- content: ', response.text, sep='')
