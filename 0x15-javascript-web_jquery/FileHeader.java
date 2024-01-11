@@ -23,7 +23,7 @@ class FileHeader {
                 File fil = file.toFile();
                 if (fil.exists()) {
                     try (FileWriter fileWriter = new FileWriter(fil)) {
-                        fileWriter.write("#!/usr/bin/python3");
+                        fileWriter.write("#!/usr/bin/node");
                     }
                 }
 
